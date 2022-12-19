@@ -1,0 +1,49 @@
+.table {
+    border: 2px solid darkgray;
+    border-collapse: collapse;
+    display:table;
+    width:100%;
+    /*table-layout:fixed;*/
+}
+.cell {
+    border: 1px solid darkgray;
+    padding: 2px 5px;
+    display:table-cell;
+}
+.cell_small {
+    width: 30px;
+    text-align: center;
+}
+.cell_big {
+    width: 155px;
+}
+.selected {
+    background-color: lightskyblue;
+}
+.form_wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.btn_del_company {
+    margin-left: 10px;
+    background-color: red;
+}
+.btn_del_company:disabled {
+    background-color: lightgray;
+}
+.btn_add_company {
+    background-color: lawngreen;
+}
+.btn_add_company:disabled {
+    background-color: lightgray;
+}
+.wrapper_body {
+    overflow-y: scroll;
+    height: calc(50vh - 100px);
+    width: 100%;
+    transition: ease 0.5s;
+}
+.wrapper_body_first {
+    height: calc(50vh - 243px);
+}
