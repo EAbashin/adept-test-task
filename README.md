@@ -1,3 +1,10 @@
+## Deploy
+https://eabashin.github.io/adept-test-task/
+
+
+##Технологии
+
+React, Redux, TypeScript, Reselect, CSSModules
 
 
 ## Задание для Frontend developer
