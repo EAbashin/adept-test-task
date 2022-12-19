@@ -103,7 +103,7 @@ export const initialState = {
                 {
                     id: 13,
                     isChecked: false,
-                    surname: 'Ivanov2',
+                    surname: 'Ivanov13',
                     name: 'Ivan',
                     position: 'Manager'
                 },
@@ -181,7 +181,7 @@ export const initialState = {
                 {
                     id: 23,
                     isChecked: false,
-                    surname: 'Ivanov2',
+                    surname: 'Ivanov23',
                     name: 'Ivan',
                     position: 'Manager'
                 },
@@ -230,7 +230,7 @@ export const initialState = {
                 {
                     id: 30,
                     isChecked: false,
-                    surname: 'Petrov2',
+                    surname: 'Petrov30',
                     name: 'Petr',
                     position: 'Manager'
                 }
@@ -245,7 +245,7 @@ export const initialState = {
                 {
                     id: 31,
                     isChecked: false,
-                    surname: 'Ivanova2',
+                    surname: 'Ivanova31',
                     name: 'Ivana',
                     position: 'Manager'
                 },
@@ -273,7 +273,7 @@ export const initialState = {
                 {
                     id: 35,
                     isChecked: false,
-                    surname: 'Ivanov2',
+                    surname: 'Ivanov35',
                     name: 'Ivan',
                     position: 'Manager'
                 },
@@ -301,7 +301,7 @@ export const initialState = {
                 {
                     id: 39,
                     isChecked: false,
-                    surname: 'Ivanov2',
+                    surname: 'Ivanov39',
                     name: 'Ivan',
                     position: 'Manager'
                 },
@@ -344,7 +344,7 @@ export const initialState = {
                 {
                     id: 44,
                     isChecked: false,
-                    surname: 'Petrov2',
+                    surname: 'Petrov44',
                     name: 'Petr',
                     position: 'Manager'
                 },
@@ -365,7 +365,7 @@ export const initialState = {
                 {
                     id: 47,
                     isChecked: false,
-                    surname: 'Ivanov2',
+                    surname: 'Ivanov47',
                     name: 'Ivan',
                     position: 'Manager'
                 },
@@ -386,11 +386,11 @@ export const initialState = {
                 {
                     id: 50,
                     isChecked: false,
-                    surname: 'Petrov2',
+                    surname: 'Petrov50',
                     name: 'Petr',
                     position: 'Manager'
                 }
             ]
-        },
+        }
     ]
 };

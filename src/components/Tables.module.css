@@ -3,7 +3,6 @@
     border-collapse: collapse;
     display:table;
     width:100%;
-    /*table-layout:fixed;*/
 }
 .cell {
     border: 1px solid darkgray;
@@ -40,10 +39,14 @@
 }
 .wrapper_body {
     overflow-y: scroll;
-    height: calc(50vh - 100px);
+    /*высота снижена для демонстрации скрола*/
+    height: 410px;
+    /*height: calc(100vh - 100px);*/
     width: 100%;
     transition: ease 0.5s;
 }
 .wrapper_body_first {
-    height: calc(50vh - 243px);
+    /*высота снижена для демонстрации скрола*/
+    height: 267px;
+    /*height: calc(100vh - 243px);*/
 }

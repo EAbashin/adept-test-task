@@ -20,6 +20,11 @@ const CompaniesTable = (props: PropsCompaniesTableType) => {
             event.preventDefault();
         };
 
+    useEffect(() => {
+        props.checkIsCheckedAllCompanies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [props.checkedCompanies]);
+
     const companiesList = props.companies.map(company => {
             return (
                 <tr className={`${company.isChecked ? s.selected : ''}`} key={`${company.id}${company.companyName}`}>
@@ -32,11 +37,6 @@ const CompaniesTable = (props: PropsCompaniesTableType) => {
             )
         }
     );
-
-    useEffect(() => {
-        props.checkIsCheckedAllCompanies();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [props.checkedCompanies]);
 
     return (
         <div>

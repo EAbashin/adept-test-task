@@ -8,9 +8,6 @@ export const
     getCompanies = (state: StateType) => {
         return state.main.companies;
     };
-    // getIsCheckedAllEmployees = (state: StateType) => {
-    //     return state.main.isCheckedAllEmployees;
-    // };
 
 export const
     getCheckedCompanies = createSelector(getCompanies, (companies) => {

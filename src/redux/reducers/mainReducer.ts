@@ -1,4 +1,4 @@
-import {CompaniesType, CompanyType, EmployeeType, InitialStateType} from "../../components/Types";
+import {ActionType, CompaniesType, CompanyType, EmployeeType, InitialStateType} from "../../components/Types";
 import {initialState} from "./initialState";
 
 const
@@ -14,20 +14,6 @@ const
     TOGGLE_IS_CHECKED_EMPLOYEE = 'main/TOGGLE_IS_CHECKED_EMPLOYEE',
     ADD_EMPLOYEE = 'main/ADD_EMPLOYEE',
     DEL_EMPLOYEE = 'main/DEL_EMPLOYEE';
-
-type ActionType = {
-    type: string,
-    companyId: number,
-    employeeId: number,
-    companyName: string,
-    companyAddress: string,
-    checkedCompanies: CompaniesType,
-    isCheckedAllEmployees: boolean,
-    employeeSurnameValue: string,
-    employeeNameValue: string,
-    employeePositionValue: string,
-    selectedEmployeesId: Array<number>
-};
 
 const mainReducer = (state = initialState, action: ActionType): InitialStateType => {
     switch (action.type) {
@@ -176,8 +162,7 @@ const mainReducer = (state = initialState, action: ActionType): InitialStateType
                 companies: state.companies.map(company => {
                     return {
                         ...company,
-                        employees: [
-                            ...company.employees.filter(employee => !action.selectedEmployeesId.includes(employee.id))]
+                        employees: [...company.employees.filter(employee => !action.selectedEmployeesId.includes(employee.id))]
                     }
                 })
             };

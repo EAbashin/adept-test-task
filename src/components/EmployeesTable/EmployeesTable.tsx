@@ -14,14 +14,34 @@ const EmployeesTable = (props: PropsEmployeesTableType) => {
             [isLoading, setIsLoading] = useState(false),
             [selectedEmployeesId, setSelectedEmployeesId] = useState<Array<number>>([]);
 
-        const onChangeSelectionAllEmployee = () => {
-            setIsCheckedAllEmployees(!isCheckedAllEmployees);
-            props.toggleIsCheckedAllEmployees(props.checkedCompanies, !isCheckedAllEmployees);
-        };
-
-        const onChangeSelectionEmployee = (employeeId: number) => {
-            props.toggleIsCheckedEmployee(employeeId);
-        };
+        const
+            onChangeSelectionAllEmployee = () => {
+                setIsCheckedAllEmployees(!isCheckedAllEmployees);
+                props.toggleIsCheckedAllEmployees(props.checkedCompanies, !isCheckedAllEmployees);
+            },
+            onChangeSelectionEmployee = (employeeId: number) => {
+                props.toggleIsCheckedEmployee(employeeId);
+            },
+            submitAddEmployeeForm = (event: React.FormEvent) => {
+                props.addEmployee(employeeSurnameValue, employeeNameValue, employeePositionValue, props.checkedCompanies);
+                setEmployeeSurnameValue('');
+                setEmployeeNameValue('');
+                setEmployeePositionValue('');
+                event.preventDefault();
+            },
+            onScrollList = (event: any) => {
+                const scrollBottom = Math.ceil(event.target.scrollTop +
+                    event.target.offsetHeight) >= event.target.scrollHeight;
+                if (scrollBottom && props.checkedEmployees.length > shortCheckedEmployees.length) {
+                    shortCheckedEmployees = props.checkedEmployees.slice(0, page * 20);
+                    setIsLoading(true);
+                    setTimeout(() => {
+                        setPage(page + 1);
+                        setIsLoading(false);
+                    }, 500);
+                }
+            };
+        let shortCheckedEmployees = props.checkedEmployees.slice(0, page * 20);
 
         useEffect(() => {
             const checkIsCheckedAllEmployees = () => {
@@ -31,39 +51,17 @@ const EmployeesTable = (props: PropsEmployeesTableType) => {
                 } else {
                     setIsCheckedAllEmployees(false)
                 }
-            };
+            }
             const selectedEmployeesId = props.checkedEmployees.reduce((idArray, employee) => {
                 return employee.isChecked ? [...idArray, employee.id] : idArray
             }, []);
             checkIsCheckedAllEmployees();
             setSelectedEmployeesId(selectedEmployeesId);
         }, [props.checkedEmployees]);
+
         useEffect(() => {
             setPage(1);
         }, [props.checkedEmployees.length]);
-        const submitAddEmployeeForm = (event: React.FormEvent) => {
-            props.addEmployee(employeeSurnameValue, employeeNameValue, employeePositionValue, props.checkedCompanies);
-            setEmployeeSurnameValue('');
-            setEmployeeNameValue('');
-            setEmployeePositionValue('');
-            event.preventDefault();
-        };
-
-        function onScrollList(event: any) {
-            const scrollBottom = event.target.scrollTop +
-                event.target.offsetHeight >= event.target.scrollHeight;
-
-            if (scrollBottom && props.checkedEmployees.length > shortCheckedEmployees.length) {
-                shortCheckedEmployees = props.checkedEmployees.slice(0, page * 20);
-                setIsLoading(true);
-                setTimeout(() => {
-                    setPage(page + 1);
-                    setIsLoading(false);
-                }, 500);
-            }
-        }
-
-        let shortCheckedEmployees = props.checkedEmployees.slice(0, page * 20);
 
         const employeesList = shortCheckedEmployees.map(employee => {
                 return (
@@ -94,11 +92,12 @@ const EmployeesTable = (props: PropsEmployeesTableType) => {
                             <th className={`${s.cell} ${s.cell_big}`}>Должность</th>
                         </tr>
                         </thead>
+                        <tbody></tbody>
                     </table>
                     <div onScroll={event => onScrollList(event)} className={s.wrapper_body}>
+                        {isLoading && <Preloader/>}
                         <table className={s.table}>
                             <tbody>
-                            {isLoading && <Preloader/>}
                             {employeesList}
                             </tbody>
                         </table>

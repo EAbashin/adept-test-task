@@ -40,4 +40,17 @@ export type PropsEmployeesTableType = {
     toggleIsCheckedEmployee: (employeeId: number) => void
     addEmployee: (employeeSurnameValue: string, employeeNameValue: string, employeePositionValue: string, checkedCompanies: CompaniesType) => void
     delEmployee: (checkedEmployees: Array<EmployeeType>, selectedEmployeesId: Array<number>) => void
-}
+};
+export type ActionType = {
+    type: string,
+    companyId: number,
+    employeeId: number,
+    companyName: string,
+    companyAddress: string,
+    checkedCompanies: CompaniesType,
+    isCheckedAllEmployees: boolean,
+    employeeSurnameValue: string,
+    employeeNameValue: string,
+    employeePositionValue: string,
+    selectedEmployeesId: Array<number>
+};
